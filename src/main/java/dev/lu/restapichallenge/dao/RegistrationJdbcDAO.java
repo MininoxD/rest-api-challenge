@@ -32,6 +32,7 @@ public class RegistrationJdbcDAO implements DAO<Registration> {
 
 
 
+
     @Override
     public List<Registration> list() {
         String sql = "SELECT * FROM Registration";
@@ -72,6 +73,20 @@ public class RegistrationJdbcDAO implements DAO<Registration> {
         if(update == 1){
             System.out.println("se cambio los datos");
         }
+    }
+
+    @Override
+    public Optional<Registration> getExist(String id) {
+        String sql = "SELECT * FROM Registration WHERE departure_time is not NULL and employeeCode = ? and entry_date = ?";
+        Registration registration = null;
+        LocalDate date = LocalDate.now();
+        System.out.println(date.toString());
+        try{
+            registration = jdbcTemplate.queryForObject(sql, new Object[]{id,date.toString()}, rowMapper);
+        }catch (DataAccessException ex){
+            System.out.println(ex);
+        }
+        return Optional.ofNullable(registration);
     }
 
     @Override

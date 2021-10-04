@@ -23,9 +23,16 @@ public class RestRegistration {
         List<Registration> registrations =  dao.list();
         return registrations;
     }
+
     @GetMapping("/registration/{code}")
     public Registration getExistRegistration(@PathVariable("code") String code){
         Optional<Registration> registration =  dao.get(code);
+        return registration.get();
+    }
+
+    @GetMapping("/registrationexist/{code}")
+    public Registration getExistRegistrationnow(@PathVariable("code") String code){
+        Optional<Registration> registration =  dao.getExist(code);
         return registration.get();
     }
 

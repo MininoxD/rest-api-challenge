@@ -80,4 +80,9 @@ public class EmployeeJdbcDAO implements DAO<Employee> {
             System.out.println("se elimino los datos");
         }
     }
+
+    @Override
+    public Optional<Employee> getExist(String id) {
+        return Optional.empty();
+    }
 }

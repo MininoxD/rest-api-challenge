@@ -56,4 +56,11 @@ public class ReportJdbcDAO implements  DAO<Report> {
     public void delete(String id) {
 
     }
+
+    @Override
+    public Optional<Report> getExist(String id) {
+        return Optional.empty();
+    }
+
+
 }

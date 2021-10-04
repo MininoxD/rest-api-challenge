@@ -11,4 +11,6 @@ public interface DAO<T> {
     void update(T t, String id);
 
     void delete(String id);
+
+    Optional<T> getExist(String id);
 }
