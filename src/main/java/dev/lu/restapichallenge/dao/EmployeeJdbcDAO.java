@@ -32,7 +32,7 @@ public class EmployeeJdbcDAO implements DAO<Employee> {
 
     @Override
     public List<Employee> list() {
-        String sql = "SELECT * FROM Employee";
+        String sql = "SELECT * FROM allemploye";
         return jdbcTemplate.query(sql, rowMapper);
     }
 
@@ -66,7 +66,7 @@ public class EmployeeJdbcDAO implements DAO<Employee> {
     @Override
     public void update(Employee employee, String id) {
         String sql = "UPDATE Employee set name = ?, last_name_f = ?, last_name_m = ?, payroll = ?, modality = ? WHERE code = ?";
-        int update =  jdbcTemplate.update(sql, employee.getName(), employee.getLast_name_f(), employee.getLast_name_m(), employee.getPayroll(), employee.getModality(), id);
+        int update =  jdbcTemplate.update(sql, employee.getName(), employee.getLast_name_f(), employee.getLast_name_m(), employee.getPayroll(), employee.getModality(), employee.getCode());
         if(update == 1){
             System.out.println("se cambio los datos");
         }

@@ -42,6 +42,19 @@ CREATE TABLE IF NOT EXISTS Administrator(
     constraint fk_employe_administrator FOREIGN KEY (employeeCode) REFERENCES Employee(code)
 );
 
+
+CREATE VIEW allemploye
+as SELECT
+       e.code,
+       e.name,
+       e.last_name_f,
+       e.last_name_m,
+       py.name as payroll,
+       md.name as modality
+   FROM Employee e
+            INNER JOIN Payroll py ON e.payroll = py.code
+            INNER JOIN Modality md ON e.modality = md.code;
+
 CREATE VIEW report
 AS SELECT
            r.id,

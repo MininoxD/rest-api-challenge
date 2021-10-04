@@ -1,6 +1,7 @@
 package dev.lu.restapichallenge.controller;
 
 import dev.lu.restapichallenge.dao.DAO;
+import dev.lu.restapichallenge.model.Administrator;
 import dev.lu.restapichallenge.model.Employee;
 import dev.lu.restapichallenge.model.Registration;
 import org.springframework.web.bind.annotation.*;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin
 public class Rest {
     private static DAO<Employee> dao;
 
@@ -35,11 +37,10 @@ public class Rest {
           dao.create(employee);
     }
 
-    @PutMapping("/employee/{code}")
-    public void updateEmployee(@RequestBody Employee employee, @PathVariable("code") String code){
+    @PutMapping("/employee")
+    public void updateEmployee(@RequestBody Employee employee){
         System.out.println(employee);
-        System.out.println(code);
-        dao.update(employee, code);
+        dao.update(employee, "ASDG");
     }
 
     @DeleteMapping("/employee/{code}")
